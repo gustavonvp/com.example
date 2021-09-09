@@ -2,10 +2,9 @@ package com.example.comexamplerestfulljava.controller;
 
 import com.example.comexamplerestfulljava.domain.Customer;
 import com.example.comexamplerestfulljava.service.CustomerService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -29,6 +28,12 @@ public class CustomerController {
     @GetMapping("/{id}")
     Customer getCustomerById(@PathVariable Long id) {
         return customerService.findCustomerById(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Customer saveCustomer(@RequestBody Customer customer) {
+        return customerService.saveCustomer(customer);
     }
 
 
