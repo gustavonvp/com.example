@@ -36,5 +36,9 @@ public class CustomerController {
         return customerService.saveCustomer(customer);
     }
 
-
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteCustomer(@PathVariable Long id) {
+         customerService.deleteCustomer(id);
+    }
 }
