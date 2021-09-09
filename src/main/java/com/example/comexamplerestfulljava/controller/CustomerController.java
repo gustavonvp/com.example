@@ -2,6 +2,7 @@ package com.example.comexamplerestfulljava.controller;
 
 import com.example.comexamplerestfulljava.domain.Customer;
 import com.example.comexamplerestfulljava.service.CustomerService;
+import com.example.comexamplerestfulljava.service.CostumerServiceNewOne;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,5 +41,11 @@ public class CustomerController {
     @ResponseStatus(HttpStatus.OK)
     public void deleteCustomer(@PathVariable Long id) {
          customerService.deleteCustomer(id);
+    }
+
+    public Customer getCustomer(Long id) {
+        CostumerServiceNewOne costumerServiceNewOne = new CostumerServiceNewOne("db-url", "myUserName", "myPassword");
+
+        return costumerServiceNewOne.getCustomerFromDB(id);
     }
 }
